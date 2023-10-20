@@ -1,0 +1,7 @@
+template.config:
+  # 开启template插件的拦截器
+  enabled: true
+  # 开启方法前拦截
+  beforeEnabled: true
+  # 开启方法后拦截
+  afterEnabled: true
