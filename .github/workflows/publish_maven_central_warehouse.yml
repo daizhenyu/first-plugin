@@ -62,4 +62,4 @@ jobs:
           cat pom.xml
       - name: Delopy
         run: |
-          mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_SECRET_KEY_PASSWORD }} deploy -DskipTests
+          mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_SECRET_KEY_PASSWORD }} -DaltDeploymentRepository=sonatype-nexus-staging::default::https://oss.sonatype.org/service/local/staging/deploy/maven2/ clean deploy -DskipTests
