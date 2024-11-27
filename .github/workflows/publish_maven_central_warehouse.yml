@@ -59,6 +59,7 @@ jobs:
               </configuration>\
             </plugin>\
           </plugins>' pom.xml
+          cat pom.xml
       - name: Delopy
         run: |
           mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_SECRET_KEY_PASSWORD }} deploy -DskipTests
