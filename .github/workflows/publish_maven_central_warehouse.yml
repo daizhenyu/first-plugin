@@ -33,33 +33,32 @@ jobs:
           mvn archetype:create-from-project -Darchetype.properties=./archetype.properties
           cd ${{ github.workspace }}/target/generated-sources/archetype
           sed -i '/<\/build>/ i \
-              <plugins>\n\
-                <plugin>\n\
-                  <groupId>org.apache.maven.plugins</groupId>\n\
-                  <artifactId>maven-gpg-plugin</artifactId>\n\
-                  <version>3.0.1</version>\n\
-                  <executions>\n\
-                    <execution>\n\
-                      <id>sign-artifacts</id>\n\
-                      <phase>verify</phase>\n\
-                      <goals>\n\
-                        <goal>sign</goal>\n\
-                      </goals>\n\
-                    </execution>\n\
-                  </executions>\n\
-                </plugin>\n\
-                <plugin>\n\
-                  <groupId>org.sonatype.central</groupId>\n\
-                  <artifactId>central-publishing-maven-plugin</artifactId>\n\
-                  <version>0.5.0</version>\n\
-                  <extensions>true</extensions>\n\
-                  <configuration>\n\
-                    <publishingServerId>sermant</publishingServerId>\n\
-                    <autoPublish>false</autoPublish>\n\
-                  </configuration>\n\
-                </plugin>\n\
-              </plugins>' pom.xml
-          cat pom.xml
+          <plugins>\
+            <plugin>\
+              <groupId>org.apache.maven.plugins</groupId>\
+              <artifactId>maven-gpg-plugin</artifactId>\
+              <version>3.0.1</version>\
+              <executions>\
+                <execution>\
+                  <id>sign-artifacts</id>\
+                  <phase>verify</phase>\
+                  <goals>\
+                    <goal>sign</goal>\
+                  </goals>\
+                </execution>\
+              </executions>\
+            </plugin>\
+            <plugin>\
+              <groupId>org.sonatype.central</groupId>\
+              <artifactId>central-publishing-maven-plugin</artifactId>\
+              <version>0.5.0</version>\
+              <extensions>true</extensions>\
+              <configuration>\
+                <publishingServerId>sermant</publishingServerId>\
+                <autoPublish>false</autoPublish>\
+              </configuration>\
+            </plugin>\
+          </plugins>' pom.xml
       - name: Delopy
         run: |
           mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_SECRET_KEY_PASSWORD }} deploy -DskipTests
