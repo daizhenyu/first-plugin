@@ -31,9 +31,9 @@ jobs:
           mvn clean package -DskipTests
           pwd
           ls
-          tar -czvf first-plugin-$*.tar.gz -C agent/ .
+          tar -czvf first-plugin.tar.gz -C agent/ .
           mkdir ${{ github.workspace }}/package
-          cp ${{ github.workspace }}/first-plugin-$*.tar.gz ${{ github.workspace }}/package/first-plugin-${{ env.version }}.tar.gz
+          cp ${{ github.workspace }}/first-plugin.tar.gz ${{ github.workspace }}/package/first-plugin-${{ env.version }}.tar.gz
           ls ${{ github.workspace }}/package
       - name: Create Release # automatically release new version
         id: create_release
