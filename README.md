@@ -2,7 +2,9 @@
 Archetype when creating the sermant project.
 
 ## How to use it?
-Refer to official website guidance, https://sermant.io/zh/document/developer-guide
+Refer to official website guidance: https://sermant.io/zh/document/developer-guide.
+
+The quick development and usage guide for implementing service governance plugins under the Sermant framework can be found at https://bbs.huaweicloud.com/blogs/415083.
 
 ## How to deploy first-plugin archetype using github action?
 ### 1. Modify archetype version

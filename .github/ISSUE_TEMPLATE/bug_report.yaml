@@ -27,10 +27,6 @@ body:
     id: sermantVersion
     attributes:
       label: Sermant version
-      value: |
-        <details>
-
-        </details>
     validations:
       required: true
 
@@ -40,7 +36,7 @@ body:
       label: OS version
       value: |
         <details>
-
+        <summary>details</summary>
         ```console
         # On Linux:
         $ cat /etc/os-release

@@ -29,6 +29,8 @@ jobs:
       - name: Build with Maven
         run: |
           mvn clean package -DskipTests
+          pwd
+          ls
           tar -czvf first-plugin.tar.gz agent/
           mkdir ${{ github.workspace }}/package
           cp ${{ github.workspace }}/first-plugin.tar.gz ${{ github.workspace }}/package/first-plugin-${{ env.version }}.tar.gz
