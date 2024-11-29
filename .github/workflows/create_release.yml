@@ -30,8 +30,6 @@ jobs:
       - name: Build with Maven
         run: |
           mvn clean package -DskipTests
-          pwd
-          ls
           tar -czvf first-plugin.tar.gz -C agent/ .
           mkdir ${{ github.workspace }}/package
           cp ${{ github.workspace }}/first-plugin.tar.gz ${{ github.workspace }}/package/first-plugin-${{ env.version }}.tar.gz
@@ -53,6 +51,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/package/sermant-${{ env.version }}.tar.gz
+          asset_path: ${{ github.workspace }}/package/first-plugin-${{ env.version }}.tar.gz
           asset_name: first-plugin-${{ env.version }}.tar.gz
           asset_content_type: application/tar
