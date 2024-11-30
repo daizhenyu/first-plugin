@@ -17,7 +17,6 @@ jobs:
         shell: bash
         run: |
           str=${{env.tag}}
-          echo $str
           echo "version=${str##*v}" >> $GITHUB_ENV
       - name: Checkout Source
         uses: actions/checkout@v4
@@ -30,10 +29,9 @@ jobs:
       - name: Build with Maven
         run: |
           mvn clean package -DskipTests
-          tar -czvf first-plugin.tar.gz -C agent/ .
+          tar -czvf first-plugin.tar.gz agent/
           mkdir ${{ github.workspace }}/package
           cp ${{ github.workspace }}/first-plugin.tar.gz ${{ github.workspace }}/package/first-plugin-${{ env.version }}.tar.gz
-          ls ${{ github.workspace }}/package
       - name: Create Release # automatically release new version
         id: create_release
         uses: actions/create-release@v1.1.4
